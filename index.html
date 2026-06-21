@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMA Maintenance Regime</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for smooth transitions and hiding scrollbars */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Large enough to fit content */
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button[aria-expanded="true"] .chevron {
+            transform: rotate(180deg);
+        }
+        
+        /* Hide scrollbar for clean UI but keep functionality */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181b; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52525b; 
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen pb-20 font-sans selection:bg-emerald-500/30">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 px-4 py-4 mb-6 shadow-sm">
+        <div class="max-w-3xl mx-auto flex justify-between items-center mb-3">
+            <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="m2 12 5.25 5 2.625-3 2.625 3 2.625-3 2.625 3 5.25-5"/><path d="m2 12 5.25-5 2.625 3 2.625-3 2.625 3 2.625-3 5.25 5"/></svg>
+                Dynamic Baseline
+            </h1>
+            <button id="reset-btn" class="text-sm font-medium text-zinc-400 hover:text-white bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 px-3 py-1.5 rounded-md transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Reset
+            </button>
+        </div>
+        
+        <!-- Global Progress -->
+        <div class="max-w-3xl mx-auto flex items-center gap-4">
+            <div class="text-xs font-semibold text-emerald-400 w-12" id="global-progress-text">0%</div>
+            <div class="w-full bg-zinc-800 rounded-full h-2.5 overflow-hidden shadow-inner">
+                <div id="global-progress-bar" class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 space-y-8">
+        
+        <!-- Objective Section -->
+        <section class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 shadow-lg">
+            <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-wider mb-2">1. Objective</h2>
+            <p class="text-zinc-200 font-medium text-lg leading-relaxed mb-3">Maintain a mobile, flexible, strong, resilient, dynamic baseline for MMA.</p>
+            <p class="text-zinc-400 border-l-2 border-emerald-500 pl-3 italic">Not fight camp. Not conditioning. Not another heavy session.</p>
+        </section>
+
+        <!-- Readiness Check Section -->
+        <section class="space-y-3">
+            <h2 class="text-sm font-bold text-zinc-400 uppercase tracking-wider">8. Readiness Check</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-green-500/10 border border-green-500/20 rounded-lg p-4 flex flex-col gap-1">
+                    <div class="flex items-center gap-2 text-green-400 font-bold">
+                        <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+                        Green
+                    </div>
+                    <p class="text-sm text-green-100/70">Train normally</p>
+                </div>
+                <div class="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 flex flex-col gap-1">
+                    <div class="flex items-center gap-2 text-amber-400 font-bold">
+                        <div class="w-3 h-3 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]"></div>
+                        Amber
+                    </div>
+                    <p class="text-sm text-amber-100/70">Technical only / reduce intensity</p>
+                </div>
+                <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-4 flex flex-col gap-1">
+                    <div class="flex items-center gap-2 text-red-400 font-bold">
+                        <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div>
+                        Red
+                    </div>
+                    <p class="text-sm text-red-100/70">Recovery only</p>
+                </div>
+            </div>
+            <div class="bg-zinc-900 border border-red-900/30 rounded-lg p-4 text-sm text-zinc-300">
+                <span class="font-bold text-red-400">Red Signs:</span> Sharp pain, unstable joint, worsening pain during warm-up, unusual fatigue.
+            </div>
+        </section>
+
+        <!-- Dynamic Checklist Container -->
+        <div id="checklist-container" class="space-y-4">
+            <!-- Sections injected via JS -->
+        </div>
+
+    </main>
+
+    <script>
+        // Data Structure matching the Markdown file
+        const regimeData = [
+            {
+                id: "daily-baseline",
+                title: "2. Daily baseline — 12–15 min",
+                items: [
+                    { id: "db-1", area: "Neck", exercise: "Rotations", dose: "3–5 each direction" },
+                    { id: "db-2", area: "Neck", exercise: "Side bends", dose: "3–5 each side" },
+                    { id: "db-3", area: "Shoulders", exercise: "Shoulder circles", dose: "10 forward / 10 backward" },
+                    { id: "db-4", area: "Shoulders", exercise: "Arm swings", dose: "10–20 total" },
+                    { id: "db-5", area: "Thoracic spine", exercise: "Cat-cow", dose: "6–10 reps" },
+                    { id: "db-6", area: "Thoracic spine", exercise: "Open book rotations", dose: "5 each side" },
+                    { id: "db-7", area: "Wrists", exercise: "Wrist circles", dose: "10 each direction" },
+                    { id: "db-8", area: "Wrists", exercise: "Palm-down wrist rocks", dose: "10–15 reps" },
+                    { id: "db-9", area: "Wrists", exercise: "Palm-up wrist rocks", dose: "10–15 reps" },
+                    { id: "db-10", area: "Hands", exercise: "Finger spreads / extensions", dose: "10–20 reps" },
+                    { id: "db-11", area: "Hips", exercise: "Hip circles", dose: "5 each direction / each side" },
+                    { id: "db-12", area: "Hips", exercise: "90/90 switches", dose: "6–10 total" },
+                    { id: "db-13", area: "Hips", exercise: "Leg swings front/back", dose: "10 each leg" },
+                    { id: "db-14", area: "Hips", exercise: "Leg swings side/side", dose: "10 each leg" },
+                    { id: "db-15", area: "Knees", exercise: "Knee circles", dose: "5 each direction" },
+                    { id: "db-16", area: "Ankles", exercise: "Knee-over-toe rocks", dose: "10 each side" },
+                    { id: "db-17", area: "Feet / toes", exercise: "Toe spreads", dose: "10–20 reps" },
+                    { id: "db-18", area: "Feet / toes", exercise: "Big-toe lift", dose: "10 each foot" },
+                    { id: "db-19", area: "Feet / toes", exercise: "Other-toes lift", dose: "10 each foot" },
+                    { id: "db-20", area: "Feet", exercise: "Short-foot / arch activation", dose: "5–10 x 3-sec holds each foot" },
+                    { id: "db-21", area: "Squat", exercise: "Relaxed squat hold", dose: "30–60 sec" },
+                    { id: "db-22", area: "Adductors", exercise: "Side-to-side adductor shift", dose: "5–8 each side" },
+                    { id: "db-23", area: "Dynamic", exercise: "Bounce / stance switch / light footwork", dose: "60–90 sec" }
+                ]
+            },
+            {
+                id: "wrist-hand-daily",
+                title: "3. Wrist / hand block (Daily or before MMA)",
+                subtitle: "Rule: prepare, do not inflame.",
+                items: [
+                    { id: "whd-1", exercise: "Wrist circles", dose: "10 each direction" },
+                    { id: "whd-2", exercise: "Palm-down wrist rocks", dose: "10–15 reps" },
+                    { id: "whd-3", exercise: "Palm-up wrist rocks", dose: "10–15 reps" },
+                    { id: "whd-4", exercise: "Fist rocks", dose: "5–10 reps" },
+                    { id: "whd-5", exercise: "Finger spreads", dose: "10–20 reps" },
+                    { id: "whd-6", exercise: "Finger extensions", dose: "10–20 reps" },
+                    { id: "whd-7", exercise: "Light fist plank / knuckle plank", dose: "10–20 sec, optional" }
+                ]
+            },
+            {
+                id: "wrist-hand-weekly",
+                title: "3. Wrist / hand block (2–3x/week)",
+                subtitle: "Rule: prepare, do not inflame.",
+                items: [
+                    { id: "whw-1", exercise: "Farmer carries", dose: "2–4 carries of 20–40 sec" },
+                    { id: "whw-2", exercise: "Towel hangs / towel rows", dose: "2–3 sets of 10–30 sec or 6–10 reps" },
+                    { id: "whw-3", exercise: "Wrist curls", dose: "2 sets of 10–15" },
+                    { id: "whw-4", exercise: "Reverse wrist curls", dose: "2 sets of 10–15" },
+                    { id: "whw-5", exercise: "Pronation / supination", dose: "2 sets of 8–12 each side" },
+                    { id: "whw-6", exercise: "Grip squeezes", dose: "2 sets, not to failure" }
+                ]
+            },
+            {
+                id: "feet-toes-daily",
+                title: "4. Feet / toes block (Daily or before MMA)",
+                subtitle: "Rule: responsive, not tired.",
+                items: [
+                    { id: "ftd-1", exercise: "Toe spreads", dose: "10–20 reps" },
+                    { id: "ftd-2", exercise: "Big-toe lift", dose: "10 each foot" },
+                    { id: "ftd-3", exercise: "Other-toes lift", dose: "10 each foot" },
+                    { id: "ftd-4", exercise: "Short-foot / arch activation", dose: "5–10 x 3-sec holds each foot" },
+                    { id: "ftd-5", exercise: "Knee-over-toe ankle rocks", dose: "10 each side" },
+                    { id: "ftd-6", exercise: "Slow calf raises", dose: "10–15 reps" },
+                    { id: "ftd-7", exercise: "Tibialis raises", dose: "10–15 reps" },
+                    { id: "ftd-8", exercise: "Barefoot balance", dose: "20–40 sec each foot" },
+                    { id: "ftd-9", exercise: "Light pogo hops", dose: "10–20 reps, optional" }
+                ]
+            },
+            {
+                id: "feet-toes-dynamic",
+                title: "4. Feet / toes block (Dynamic)",
+                subtitle: "Rule: responsive, not tired.",
+                items: [
+                    { id: "ftdy-1", exercise: "Bounce in stance", dose: "30–60 sec" },
+                    { id: "ftdy-2", exercise: "Forward / back step", dose: "10 each direction" },
+                    { id: "ftdy-3", exercise: "Lateral step", dose: "10 each side" },
+                    { id: "ftdy-4", exercise: "Pivot on ball of foot", dose: "5–10 each side" },
+                    { id: "ftdy-5", exercise: "Switch stance", dose: "10–20 total" },
+                    { id: "ftdy-6", exercise: "Check step", dose: "5–10 each side" }
+                ]
+            },
+            {
+                id: "pre-mma",
+                title: "5. Pre-MMA activation — 8–12 min",
+                subtitle: "Use before training. Finish warm and sharp, not tired.",
+                items: [
+                    { id: "pre-1", exercise: "Light bounce / skipping / shadow footwork", dose: "2 min" },
+                    { id: "pre-2", exercise: "Wrist / hand prep", dose: "1–2 min" },
+                    { id: "pre-3", exercise: "Foot / ankle prep", dose: "1–2 min" },
+                    { id: "pre-4", exercise: "Hip openers", dose: "5 each side" },
+                    { id: "pre-5", exercise: "Leg swings front/back", dose: "10 each leg" },
+                    { id: "pre-6", exercise: "Leg swings side/side", dose: "10 each leg" },
+                    { id: "pre-7", exercise: "Glute bridges", dose: "10–15 reps" },
+                    { id: "pre-8", exercise: "Dead bug / plank", dose: "30–45 sec" },
+                    { id: "pre-9", exercise: "Scap push-ups / band pull-aparts", dose: "10–15 reps" },
+                    { id: "pre-10", exercise: "Technical ramp (shadowboxing, sprawls, checks, pivots)", dose: "2–3 min" }
+                ]
+            },
+            {
+                id: "post-mma",
+                title: "6. Post-MMA reset — 8–15 min",
+                subtitle: "Use after training. Reset only. Not another workout.",
+                items: [
+                    { id: "post-1", exercise: "Slow nasal breathing", dose: "2 min" },
+                    { id: "post-2", exercise: "Hip flexor stretch", dose: "30–60 sec each side" },
+                    { id: "post-3", exercise: "Hamstring stretch", dose: "30–60 sec each side" },
+                    { id: "post-4", exercise: "Adductor stretch", dose: "30–60 sec each side" },
+                    { id: "post-5", exercise: "Calf stretch", dose: "30–60 sec each side" },
+                    { id: "post-6", exercise: "Foot release", dose: "30–60 sec each foot" },
+                    { id: "post-7", exercise: "Wrist / forearm release", dose: "30–60 sec each side" },
+                    { id: "post-8", exercise: "Thoracic rotation", dose: "5 each side" },
+                    { id: "post-9", exercise: "Pec / shoulder stretch", dose: "30–60 sec each side" }
+                ]
+            },
+            {
+                id: "strength-a",
+                title: "7. Strength maintenance (Session A)",
+                subtitle: "Rule: moderate effort. Leave reps in reserve. 2–3x/week.",
+                items: [
+                    { id: "sta-1", area: "Squat", exercise: "Goblet squat / split squat", dose: "2–3 sets of 6–10" },
+                    { id: "sta-2", area: "Push", exercise: "Push-ups / dumbbell press", dose: "2–3 sets of 6–12" },
+                    { id: "sta-3", area: "Pull", exercise: "Row / pull-up", dose: "2–3 sets of 6–12" },
+                    { id: "sta-4", area: "Hinge", exercise: "RDL / kettlebell deadlift", dose: "2–3 sets of 6–10" },
+                    { id: "sta-5", area: "Carry", exercise: "Farmer carry", dose: "2–4 carries of 20–40 sec" },
+                    { id: "sta-6", area: "Core", exercise: "Plank / dead bug", dose: "2–3 sets of 30–45 sec" }
+                ]
+            },
+            {
+                id: "strength-b",
+                title: "7. Strength maintenance (Session B)",
+                subtitle: "Rule: moderate effort. Leave reps in reserve. 2–3x/week.",
+                items: [
+                    { id: "stb-1", area: "Lunge", exercise: "Reverse lunge / walking lunge", dose: "2–3 sets of 6–10 each side" },
+                    { id: "stb-2", area: "Push", exercise: "Overhead / incline push", dose: "2–3 sets of 6–10" },
+                    { id: "stb-3", area: "Pull", exercise: "Row / pull-up", dose: "2–3 sets of 6–12" },
+                    { id: "stb-4", area: "Hip", exercise: "Bridge / hip thrust", dose: "2–3 sets of 8–12" },
+                    { id: "stb-5", area: "Rotation", exercise: "Pallof press / controlled twist", dose: "2–3 sets of 8–12 each side" },
+                    { id: "stb-6", area: "Wrist / grip", exercise: "Carries / towel work", dose: "2–3 sets" },
+                    { id: "stb-7", area: "Lower leg", exercise: "Calf / tibialis work", dose: "2 sets of 10–15" }
+                ]
+            },
+            {
+                id: "minimum-version",
+                title: "9. Minimum version — 10 min",
+                subtitle: "Use when overloaded.",
+                items: [
+                    { id: "min-1", area: "Breathing", exercise: "Breathing", dose: "1 min" },
+                    { id: "min-2", area: "Neck / shoulders", exercise: "Neck / shoulders mobility", dose: "1 min" },
+                    { id: "min-3", area: "Wrists / hands", exercise: "Wrists / hands mobility", dose: "1 min" },
+                    { id: "min-4", area: "Hips", exercise: "Hips mobility", dose: "2 min" },
+                    { id: "min-5", area: "Ankles / feet / toes", exercise: "Ankles / feet / toes prep", dose: "2 min" },
+                    { id: "min-6", area: "Squat / hamstring / adductor", exercise: "Squat / hamstring / adductor", dose: "1 min" },
+                    { id: "min-7", area: "Bounce / shadow movement", exercise: "Bounce / shadow movement", dose: "2 min" }
+                ]
+            }
+        ];
+
+        // App State
+        let state = JSON.parse(localStorage.getItem('mmaRegimeState')) || {};
+
+        // DOM Elements
+        const container = document.getElementById('checklist-container');
+        const resetBtn = document.getElementById('reset-btn');
+        const globalProgressBar = document.getElementById('global-progress-bar');
+        const globalProgressText = document.getElementById('global-progress-text');
+
+        // Initial Render
+        function init() {
+            renderChecklist();
+            updateProgress();
+            
+            resetBtn.addEventListener('click', () => {
+                if(confirm('Are you sure you want to reset all progress?')) {
+                    state = {};
+                    localStorage.removeItem('mmaRegimeState');
+                    renderChecklist();
+                    updateProgress();
+                }
+            });
+        }
+
+        // Render entire checklist
+        function renderChecklist() {
+            container.innerHTML = ''; // Clear container
+
+            regimeData.forEach((section, index) => {
+                // Calculate section progress
+                const totalItems = section.items.length;
+                const checkedItems = section.items.filter(item => state[item.id]).length;
+                const progressPct = totalItems > 0 ? Math.round((checkedItems / totalItems) * 100) : 0;
+                
+                // Determine if section should be open (open first section by default, or partially completed ones)
+                const isPartiallyDone = checkedItems > 0 && checkedItems < totalItems;
+                const isOpen = index === 0 || isPartiallyDone;
+
+                // Create Section Element
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-lg';
+                
+                // Section Header (Button)
+                const headerBtn = document.createElement('button');
+                headerBtn.className = 'accordion-button w-full px-5 py-4 flex items-center justify-between bg-zinc-800/30 hover:bg-zinc-800/60 transition-colors border-b border-zinc-800/0';
+                headerBtn.setAttribute('aria-expanded', isOpen);
+                
+                let subtitleHtml = section.subtitle ? `<p class="text-xs text-zinc-500 font-normal mt-1">${section.subtitle}</p>` : '';
+                
+                headerBtn.innerHTML = `
+                    <div class="text-left flex-1">
+                        <h3 class="font-bold text-zinc-200 text-lg">${section.title}</h3>
+                        ${subtitleHtml}
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex flex-col items-end gap-1 hidden sm:flex">
+                            <span class="text-xs font-medium text-zinc-400" id="text-prog-${section.id}">${checkedItems}/${totalItems}</span>
+                            <div class="w-16 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                                <div id="bar-prog-${section.id}" class="h-full bg-emerald-500 transition-all" style="width: ${progressPct}%"></div>
+                            </div>
+                        </div>
+                        <svg class="chevron text-zinc-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                `;
+
+                // Content Wrapper
+                const contentDiv = document.createElement('div');
+                contentDiv.className = `accordion-content ${isOpen ? 'open border-t border-zinc-800' : ''}`;
+                
+                // Items List
+                const list = document.createElement('div');
+                list.className = 'flex flex-col divide-y divide-zinc-800/50';
+
+                section.items.forEach(item => {
+                    const isChecked = !!state[item.id];
+                    
+                    const itemLabel = document.createElement('label');
+                    itemLabel.className = 'group flex items-start gap-4 p-4 hover:bg-zinc-800/40 cursor-pointer transition-colors';
+                    
+                    let areaBadge = item.area ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-zinc-800 text-zinc-400 group-hover:bg-zinc-700 transition-colors border border-zinc-700/50">${item.area}</span>` : '';
+
+                    itemLabel.innerHTML = `
+                        <div class="pt-0.5 relative flex items-center justify-center">
+                            <input type="checkbox" id="${item.id}" class="peer appearance-none w-6 h-6 border-2 border-zinc-600 rounded bg-zinc-900 checked:bg-emerald-500 checked:border-emerald-500 transition-all cursor-pointer" ${isChecked ? 'checked' : ''} />
+                            <svg class="absolute w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="font-medium text-zinc-200 transition-all duration-200 ${isChecked ? 'line-through text-zinc-600' : ''}" id="label-${item.id}">${item.exercise}</span>
+                                ${areaBadge}
+                            </div>
+                            <div class="text-sm text-emerald-400/80 font-mono tracking-tight bg-emerald-500/10 inline-block px-1.5 py-0.5 rounded ${isChecked ? 'opacity-40' : ''}" id="dose-${item.id}">
+                                ${item.dose}
+                            </div>
+                        </div>
+                    `;
+
+                    // Event Listener for checkbox
+                    const checkbox = itemLabel.querySelector('input');
+                    checkbox.addEventListener('change', (e) => {
+                        handleCheck(item.id, e.target.checked, section.id, section.items);
+                    });
+
+                    list.appendChild(itemLabel);
+                });
+
+                contentDiv.appendChild(list);
+                sectionEl.appendChild(headerBtn);
+                sectionEl.appendChild(contentDiv);
+                container.appendChild(sectionEl);
+
+                // Accordion logic
+                headerBtn.addEventListener('click', () => {
+                    const expanded = headerBtn.getAttribute('aria-expanded') === 'true';
+                    headerBtn.setAttribute('aria-expanded', !expanded);
+                    if (!expanded) {
+                        contentDiv.classList.add('open');
+                        headerBtn.classList.add('border-b', 'border-zinc-800');
+                    } else {
+                        contentDiv.classList.remove('open');
+                        setTimeout(() => headerBtn.classList.remove('border-b', 'border-zinc-800'), 300); // delay to match animation
+                    }
+                });
+            });
+        }
+
+        // Handle individual checkbox clicks
+        function handleCheck(itemId, isChecked, sectionId, sectionItems) {
+            // Update state
+            if (isChecked) {
+                state[itemId] = true;
+            } else {
+                delete state[itemId];
+            }
+            localStorage.setItem('mmaRegimeState', JSON.stringify(state));
+
+            // Visual update for the item text
+            const labelEl = document.getElementById(`label-${itemId}`);
+            const doseEl = document.getElementById(`dose-${itemId}`);
+            if (isChecked) {
+                labelEl.classList.add('line-through', 'text-zinc-600');
+                doseEl.classList.add('opacity-40');
+            } else {
+                labelEl.classList.remove('line-through', 'text-zinc-600');
+                doseEl.classList.remove('opacity-40');
+            }
+
+            // Update section progress
+            const totalItems = sectionItems.length;
+            const checkedItems = sectionItems.filter(item => state[item.id]).length;
+            const progressPct = totalItems > 0 ? Math.round((checkedItems / totalItems) * 100) : 0;
+            
+            const textProgEl = document.getElementById(`text-prog-${sectionId}`);
+            const barProgEl = document.getElementById(`bar-prog-${sectionId}`);
+            
+            if(textProgEl && barProgEl) {
+                textProgEl.innerText = `${checkedItems}/${totalItems}`;
+                barProgEl.style.width = `${progressPct}%`;
+            }
+
+            // Update global progress
+            updateProgress();
+        }
+
+        // Calculate and display overall progress
+        function updateProgress() {
+            let total = 0;
+            let checked = 0;
+
+            regimeData.forEach(section => {
+                total += section.items.length;
+                checked += section.items.filter(item => state[item.id]).length;
+            });
+
+            const percentage = total === 0 ? 0 : Math.round((checked / total) * 100);
+            
+            globalProgressBar.style.width = `${percentage}%`;
+            globalProgressText.innerText = `${percentage}%`;
+
+            // Color coding based on progress
+            if (percentage === 100) {
+                globalProgressBar.classList.remove('from-emerald-600', 'to-emerald-400');
+                globalProgressBar.classList.add('from-green-500', 'to-emerald-300', 'shadow-[0_0_10px_rgba(52,211,153,0.5)]');
+            } else {
+                globalProgressBar.classList.add('from-emerald-600', 'to-emerald-400');
+                globalProgressBar.classList.remove('from-green-500', 'to-emerald-300', 'shadow-[0_0_10px_rgba(52,211,153,0.5)]');
+            }
+        }
+
+        // Boot app
+        document.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+</html>
