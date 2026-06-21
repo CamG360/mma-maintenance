@@ -44,9 +44,9 @@ Note on Claude prototype: Claude produced JSX (React syntax), not plain HTML. It
 | Maintenance Regime source | `_supporting/MMA_Maintenance-Regime_1513.200626.md` | One-shot — testing daily | Drives checklist `regimeData` |
 | Body Assessment source | `_supporting/SP_Body-Assessment_1516.200626.md` | One-shot — testing daily | Source doc only in v1 |
 | Body Issues collation | `_supporting/SP_Body-Issues_1516.200626.md` | One-shot — testing daily | Current issues as of 20 Jun 2026 |
-| GPT UX prototype | `ux_modelling/MMA_maintenance_checklist_GPT_210626.html` | Reference | |
-| Claude UX prototype | `ux_modelling/MMA_maintenance_checklist_Claude_210626.jsx` | Reference | JSX — not browser-ready |
-| Gemini UX prototype | `ux_modelling/MMA_maintenance_checklist_Gemini_210626.html` | Deployed as MVO | |
+| GPT UX prototype | `prototypes/MMA_maintenance_checklist_GPT_210626.html` | Reference | |
+| Claude UX prototype | `prototypes/MMA_maintenance_checklist_Claude_210626.jsx` | Reference | JSX — not browser-ready |
+| Gemini UX prototype | `prototypes/MMA_maintenance_checklist_Gemini_210626.html` | Deployed as MVO | |
 | Live tool | `index.html` → GitHub Pages | Live — tested daily | https://camg360.github.io/mma-maintenance/ |
 
 ---
@@ -67,7 +67,7 @@ Note on Claude prototype: Claude produced JSX (React syntax), not plain HTML. It
 | Body assessment as interactive tool | Future — assess after regime tool is stable |
 | Body issues as interactive tool | Future — may merge with assessment tool |
 | Regime source → checklist data sync | Currently manual: source doc and `regimeData` must be updated in step |
-| `ux_modelling/` folder rename | Consider renaming to `prototypes/` — more standard for solo dev/dev use |
+| `prototypes/` folder rename | Done — renamed from `ux_modelling/` |
 | Claude JSX prototype | Can be built as a React app if a build step is ever warranted |
 
 ---

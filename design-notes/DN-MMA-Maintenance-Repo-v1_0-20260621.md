@@ -76,7 +76,7 @@ Each MVO HTML tool gets its own repo. GitHub Pages requires `index.html` at root
 
 The checklist `regimeData` was derived from the maintenance regime source doc. If the regime is updated, the source doc and `regimeData` must be updated together.
 
-### UX prototypes in `ux_modelling/`
+### UX prototypes in `prototypes/`
 
 | File | Tool | Notes |
 |------|------|-------|
@@ -110,7 +110,7 @@ The checklist `regimeData` was derived from the maintenance regime source doc. I
 
 - Tool deployed and accessible at `https://camg360.github.io/mma-maintenance/`
 - Three source docs version-controlled in `_supporting/`
-- Three UX prototypes preserved in `ux_modelling/` for comparison
+- Three UX prototypes preserved in `prototypes/` for comparison
 - Checkbox state persists across browser sessions via localStorage
 - `regimeData` matches regime source doc content
 
