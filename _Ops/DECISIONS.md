@@ -61,11 +61,53 @@
 
 ---
 
+## ADR-004: Repo as Self-Contained Workstation
+
+**Problem:** Maintenance regime, body assessment, and issues docs were in Personal_OS — three levels deep, disconnected from the tool, and not version-controlled alongside the UX artefacts.
+
+**Options Considered:**
+1. Keep source docs in Personal_OS/Health/Body; link from repo
+2. Move all related artefacts into the repo (chosen)
+
+**Solution:** The repo is the single source of truth for all MMA maintenance artefacts — source docs, UX prototypes, and the deployed tool.
+
+**Rationale:**
+- Removes three-deep navigation friction
+- All artefacts version-controlled together
+- Source docs can be replugged into any UX or model without restructuring
+- Status visible directly in repo (Open Projects Register can reference repo state)
+- Separation of concerns: Personal_OS holds knowledge; repo holds operational tool and its artefacts
+
+**Status:** Implemented
+
+---
+
+## ADR-005: One Repo Per MVO HTML Tool
+
+**Problem:** GitHub Pages requires `index.html` at the repo root, making one repo hosting multiple independent tools impractical without a routing layer.
+
+**Options Considered:**
+1. Multiple tools in one repo with subdirectory routing
+2. One repo per tool (chosen)
+
+**Solution:** Each MVO HTML tool gets its own repo. Repos may be grouped under a Tools GitHub org as the count grows.
+
+**Rationale:**
+- Deployment is trivial (root index.html → GitHub Pages)
+- Each tool is independently versioned and deployable
+- Clean separation; easy to replicate the pattern for new tools
+
+**Status:** Implemented. Candidate for containerising under a Tools org when count warrants.
+
+---
+
 ## Pending Decisions
 
 - Data persistence model (if needed)
 - Real-time synchronization approach
 - Mobile responsiveness enhancements
+- Body assessment as interactive tool
+- Body issues as interactive tool
 
 ---
 
