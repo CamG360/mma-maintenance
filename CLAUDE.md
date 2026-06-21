@@ -39,5 +39,5 @@ Tailwind is loaded from CDN, so responsive utilities work normally. Per project 
 ## Supporting files
 
 - `_supporting/` — source markdown notes (body assessment, maintenance regime spec). Reference material; not loaded by the app.
-- `ux_modelling/` — HTML/JSX prototypes from Claude, GPT, and Gemini used during design exploration. Not production code.
+- `prototypes/` — HTML/JSX prototypes from Claude, GPT, and Gemini used during design exploration. Not production code.
 - `_Ops/DECISIONS.md` — ADRs for tech choices made in this repo.

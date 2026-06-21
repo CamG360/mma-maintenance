@@ -21,9 +21,9 @@ The live tool is the Gemini prototype, deployed as-is via GitHub Pages. No build
 | Maintenance Regime source | `_supporting/MMA_Maintenance-Regime_1513.200626.md` | One-shot — tested daily |
 | Body Assessment source | `_supporting/SP_Body-Assessment_1516.200626.md` | One-shot — tested daily |
 | Body Issues collation | `_supporting/SP_Body-Issues_1516.200626.md` | One-shot — tested daily |
-| GPT UX prototype | `ux_modelling/MMA_maintenance_checklist_GPT_210626.html` | Reference |
-| Claude UX prototype | `ux_modelling/MMA_maintenance_checklist_Claude_210626.jsx` | Reference (JSX — not browser-ready without build) |
-| Gemini UX prototype | `ux_modelling/MMA_maintenance_checklist_Gemini_210626.html` | Deployed as MVO |
+| GPT UX prototype | `prototypes/MMA_maintenance_checklist_GPT_210626.html` | Reference |
+| Claude UX prototype | `prototypes/MMA_maintenance_checklist_Claude_210626.jsx` | Reference (JSX — not browser-ready without build) |
+| Gemini UX prototype | `prototypes/MMA_maintenance_checklist_Gemini_210626.html` | Deployed as MVO |
 
 ---
 
