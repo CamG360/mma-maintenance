@@ -36,6 +36,10 @@ Custom styles are in the `<style>` block in `<head>`. The `.accordion-content.op
 
 Tailwind is loaded from CDN, so responsive utilities work normally. Per project conventions: do not use Tailwind responsive classes (e.g. `md:hidden`) to toggle visibility on elements that also have a custom CSS class rule — use explicit `@media` blocks in the `<style>` block instead.
 
+## Deployment constraint
+
+GitHub Pages serves from repo root only (or `/docs`). `index.html` must stay at root. Before recommending any file structure change, check it against this constraint first.
+
 ## Supporting files
 
 - `_supporting/` — source markdown notes (body assessment, maintenance regime spec). Reference material; not loaded by the app.
