@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MMA Maintenance Checklist</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --card: #ffffff;
+      --ink: #171717;
+      --muted: #666;
+      --line: #d9d9d4;
+      --soft: #efefeb;
+      --green: #dff3e4;
+      --amber: #fff0c2;
+      --red: #ffd8d8;
+      --blue: #e5eefb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 22px; }
+    header {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    h2 { margin: 0 0 12px; font-size: 20px; }
+    h3 { margin: 16px 0 8px; font-size: 16px; }
+    p { margin: 6px 0; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .grid { display: grid; gap: 12px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    label { display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px;
+      font: inherit;
+      background: #fff;
+    }
+    textarea { min-height: 72px; resize: vertical; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+    th { background: var(--soft); text-align: left; font-size: 13px; }
+    td.check { width: 46px; text-align: center; }
+    input[type="checkbox"] { width: 18px; height: 18px; }
+    .section-row td { background: #f1f1ed; font-weight: 700; }
+    .pill { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .green { background: var(--green); } .amber { background: var(--amber); } .red { background: var(--red); } .blue { background: var(--blue); }
+    .decision { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .decision div { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+    .small { font-size: 13px; color: var(--muted); }
+    .print-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    button { border: 1px solid var(--line); border-radius: 9px; background: #fff; padding: 9px 12px; font-weight: 700; cursor: pointer; }
+    @media (max-width: 760px) {
+      main { padding: 12px; }
+      .grid.two, .grid.three, .decision { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+      th, td { padding: 6px; }
+    }
+    @media print {
+      body { background: #fff; }
+      main { max-width: none; padding: 0; }
+      .card, header { break-inside: avoid; border-color: #999; }
+      .print-actions { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>MMA Maintenance Checklist</h1>
+    <p><strong>Purpose:</strong> maintain a mobile, flexible, strong, resilient baseline for MMA. Not fight camp. Not conditioning. Not another heavy session.</p>
+    <p class="meta">Generated: 2026-06-21 07:16 Asia/Ho_Chi_Minh · Source: MMA Maintenance Regime — Dynamic Baseline</p>
+    <div class="print-actions">
+      <button onclick="window.print()">Print / Save PDF</button>
+      <button onclick="document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false)">Clear checks</button>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>Session setup</h2>
+    <div class="grid.three grid">
+      <div><label>Date</label><input type="date"></div>
+      <div><label>Training type</label><input type="text" placeholder="MMA / boxing / strength / recovery"></div>
+      <div><label>Readiness</label><select><option>Green — train normally</option><option>Amber — technical only / reduce intensity</option><option>Red — recovery only</option></select></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Current issues — body view</h2>
+    <table>
+      <thead><tr><th>Body area</th><th>Issue</th><th>Date started / injury date</th><th>Severity today</th><th>Training impact</th><th>Action today</th></tr></thead>
+      <tbody>
+        <tr><td>Neck</td><td><input type="text" placeholder="e.g. left upper shoulder / neck stiffness"></td><td><input type="text"></td><td><select><option>0 none</option><option>1 mild</option><option>2 moderate</option><option>3 high</option></select></td><td><input type="text" placeholder="none / modify / avoid"></td><td><input type="text"></td></tr>
+        <tr><td>Shoulder / upper back</td><td><input type="text"></td><td><input type="text"></td><td><select><option>0 none</option><option>1 mild</option><option>2 moderate</option><option>3 high</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Hands / wrists</td><td><input type="text"></td><td><input type="text"></td><td><select><option>0 none</option><option>1 mild</option><option>2 moderate</option><option>3 high</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+        <tr><td>Hips / knees / feet</td><td><input type="text"></td><td><input type="text"></td><td><select><option>0 none</option><option>1 mild</option><option>2 moderate</option><option>3 high</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Readiness check</h2>
+    <div class="decision">
+      <div class="green"><strong>Green</strong><br>Train normally.</div>
+      <div class="amber"><strong>Amber</strong><br>Technical only / reduce intensity.</div>
+      <div class="red"><strong>Red</strong><br>Recovery only.</div>
+    </div>
+    <table>
+      <thead><tr><th>Red sign</th><th class="check">Yes</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Sharp pain</td><td class="check"><input type="checkbox"></td><td>Stop or switch to recovery-only work.</td></tr>
+        <tr><td>Unstable joint</td><td class="check"><input type="checkbox"></td><td>No sparring. No loaded movement through instability.</td></tr>
+        <tr><td>Worsening pain during warm-up</td><td class="check"><input type="checkbox"></td><td>Do not push through. Downshift.</td></tr>
+        <tr><td>Unusual fatigue</td><td class="check"><input type="checkbox"></td><td>Reduce intensity or skip hard work.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Daily baseline — 12–15 min</h2>
+    <table>
+      <thead><tr><th class="check">Done</th><th>Area</th><th>Exercise</th><th>Dose</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="section-row"><td colspan="5">Neck / shoulders / thoracic spine</td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Neck</td><td>Rotations</td><td>3–5 each direction</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Neck</td><td>Side bends</td><td>3–5 each side</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Shoulders</td><td>Shoulder circles</td><td>10 forward / 10 backward</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Shoulders</td><td>Arm swings</td><td>10–20 total</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Thoracic spine</td><td>Cat-cow</td><td>6–10 reps</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Thoracic spine</td><td>Open book rotations</td><td>5 each side</td><td></td></tr>
+        <tr class="section-row"><td colspan="5">Wrists / hands</td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Wrists</td><td>Wrist circles</td><td>10 each direction</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Wrists</td><td>Palm-down wrist rocks</td><td>10–15 reps</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Wrists</td><td>Palm-up wrist rocks</td><td>10–15 reps</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Hands</td><td>Finger spreads / extensions</td><td>10–20 reps</td><td></td></tr>
+        <tr class="section-row"><td colspan="5">Hips / knees / ankles / feet</td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Hips</td><td>Hip circles</td><td>5 each direction / each side</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Hips</td><td>90/90 switches</td><td>6–10 total</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Hips</td><td>Leg swings front/back</td><td>10 each leg</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Hips</td><td>Leg swings side/side</td><td>10 each leg</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Knees</td><td>Knee circles</td><td>5 each direction</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Ankles</td><td>Knee-over-toe rocks</td><td>10 each side</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Feet / toes</td><td>Toe spreads</td><td>10–20 reps</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Feet / toes</td><td>Big-toe lift</td><td>10 each foot</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Feet / toes</td><td>Other-toes lift</td><td>10 each foot</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Feet</td><td>Short-foot / arch activation</td><td>5–10 x 3-sec holds each foot</td><td></td></tr>
+        <tr class="section-row"><td colspan="5">Position / dynamic</td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Squat</td><td>Relaxed squat hold</td><td>30–60 sec</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Adductors</td><td>Side-to-side adductor shift</td><td>5–8 each side</td><td></td></tr>
+        <tr><td class="check"><input type="checkbox"></td><td>Dynamic</td><td>Bounce / stance switch / light footwork</td><td>60–90 sec</td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Pre-MMA activation — 8–12 min</h2>
+    <p class="small">Finish warm and sharp, not tired.</p>
+    <table><thead><tr><th class="check">Done</th><th>Exercise</th><th>Dose</th><th>Notes</th></tr></thead><tbody>
+      <tr><td class="check"><input type="checkbox"></td><td>Light bounce / skipping / shadow footwork</td><td>2 min</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Wrist / hand prep</td><td>1–2 min</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Foot / ankle prep</td><td>1–2 min</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Hip openers</td><td>5 each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Leg swings front/back</td><td>10 each leg</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Leg swings side/side</td><td>10 each leg</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Glute bridges</td><td>10–15 reps</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Dead bug / plank</td><td>30–45 sec</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Scap push-ups / band pull-aparts</td><td>10–15 reps</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Technical ramp: shadowboxing, sprawls, checks, pivots</td><td>2–3 min</td><td></td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="card">
+    <h2>Post-MMA reset — 8–15 min</h2>
+    <p class="small">Reset only. Not another workout.</p>
+    <table><thead><tr><th class="check">Done</th><th>Exercise</th><th>Dose</th><th>Notes</th></tr></thead><tbody>
+      <tr><td class="check"><input type="checkbox"></td><td>Slow nasal breathing</td><td>2 min</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Hip flexor stretch</td><td>30–60 sec each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Hamstring stretch</td><td>30–60 sec each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Adductor stretch</td><td>30–60 sec each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Calf stretch</td><td>30–60 sec each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Foot release</td><td>30–60 sec each foot</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Wrist / forearm release</td><td>30–60 sec each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Thoracic rotation</td><td>5 each side</td><td></td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Pec / shoulder stretch</td><td>30–60 sec each side</td><td></td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="card">
+    <h2>Focused blocks</h2>
+    <div class="grid two">
+      <div>
+        <h3>Wrist / hand block</h3>
+        <p><span class="pill blue">Rule</span> Prepare, do not inflame.</p>
+        <table><thead><tr><th class="check">Done</th><th>Exercise</th><th>Dose</th></tr></thead><tbody>
+          <tr><td class="check"><input type="checkbox"></td><td>Wrist circles</td><td>10 each direction</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Palm-down wrist rocks</td><td>10–15 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Palm-up wrist rocks</td><td>10–15 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Fist rocks</td><td>5–10 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Finger spreads / extensions</td><td>10–20 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Light fist plank / knuckle plank</td><td>10–20 sec, optional</td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <h3>Feet / toes block</h3>
+        <p><span class="pill blue">Rule</span> Responsive, not tired.</p>
+        <table><thead><tr><th class="check">Done</th><th>Exercise</th><th>Dose</th></tr></thead><tbody>
+          <tr><td class="check"><input type="checkbox"></td><td>Toe spreads</td><td>10–20 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Big-toe lift</td><td>10 each foot</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Other-toes lift</td><td>10 each foot</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Short-foot / arch activation</td><td>5–10 x 3-sec holds each foot</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Knee-over-toe ankle rocks</td><td>10 each side</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Slow calf raises / tibialis raises</td><td>10–15 reps</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Barefoot balance</td><td>20–40 sec each foot</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Strength maintenance — 2–3x/week</h2>
+    <p class="small">Moderate effort. Leave reps in reserve.</p>
+    <div class="grid two">
+      <div>
+        <h3>Session A</h3>
+        <table><thead><tr><th class="check">Done</th><th>Pattern</th><th>Exercise</th><th>Dose</th></tr></thead><tbody>
+          <tr><td class="check"><input type="checkbox"></td><td>Squat</td><td>Goblet squat / split squat</td><td>2–3 sets of 6–10</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Push</td><td>Push-ups / dumbbell press</td><td>2–3 sets of 6–12</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Pull</td><td>Row / pull-up</td><td>2–3 sets of 6–12</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Hinge</td><td>RDL / kettlebell deadlift</td><td>2–3 sets of 6–10</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Carry</td><td>Farmer carry</td><td>2–4 carries of 20–40 sec</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Core</td><td>Plank / dead bug</td><td>2–3 sets of 30–45 sec</td></tr>
+        </tbody></table>
+      </div>
+      <div>
+        <h3>Session B</h3>
+        <table><thead><tr><th class="check">Done</th><th>Pattern</th><th>Exercise</th><th>Dose</th></tr></thead><tbody>
+          <tr><td class="check"><input type="checkbox"></td><td>Lunge</td><td>Reverse lunge / walking lunge</td><td>2–3 sets of 6–10 each side</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Push</td><td>Overhead / incline push</td><td>2–3 sets of 6–10</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Pull</td><td>Row / pull-up</td><td>2–3 sets of 6–12</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Hip</td><td>Bridge / hip thrust</td><td>2–3 sets of 8–12</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Rotation</td><td>Pallof press / controlled twist</td><td>2–3 sets of 8–12 each side</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Wrist / grip</td><td>Carries / towel work</td><td>2–3 sets</td></tr>
+          <tr><td class="check"><input type="checkbox"></td><td>Lower leg</td><td>Calf / tibialis work</td><td>2 sets of 10–15</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Minimum version — 10 min</h2>
+    <table><thead><tr><th class="check">Done</th><th>Area</th><th>Dose</th></tr></thead><tbody>
+      <tr><td class="check"><input type="checkbox"></td><td>Breathing</td><td>1 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Neck / shoulders</td><td>1 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Wrists / hands</td><td>1 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Hips</td><td>2 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Ankles / feet / toes</td><td>2 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Squat / hamstring / adductor</td><td>1 min</td></tr>
+      <tr><td class="check"><input type="checkbox"></td><td>Bounce / shadow movement</td><td>2 min</td></tr>
+    </tbody></table>
+  </section>
+
+  <section class="card">
+    <h2>Session notes</h2>
+    <div class="grid two">
+      <div><label>What changed today?</label><textarea></textarea></div>
+      <div><label>What helped?</label><textarea></textarea></div>
+      <div><label>What to check next session?</label><textarea></textarea></div>
+      <div><label>Bottom line</label><textarea placeholder="Train / modify / recovery. Main issue. Next action."></textarea></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
